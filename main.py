@@ -5,7 +5,8 @@ import utils
 
 def main():
 	shell_init()
-	shell_cycle()
+	while True:
+		shell_cycle()
 	return 0
 
 if __name__ == '__main__':

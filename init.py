@@ -7,20 +7,14 @@ def sysinfo_init():
 	'''init all states of system information'''
 	
 	#first get the current user name and machine hostname
-	uname = os.getlogin()
-	tmpchar = socket.gethostname()
-	if tmpchar.find(".") is True:
-		tmp = tmpchar.split(".")
-		tmpchar = tmp[0]
-	mname = tmpchar
+	utils.username = os.getlogin()
 	
 	#then get the current working directory
-	currwd = os.getcwd()
+	utils.cwd = os.getcwd()
 	
-	#finally, init the global object 'sysinfo'
-	utils.username = uname
-	utils.machinename = mname
-	utils.cwd = currwd
+	#get the current PATH variable
+	utils.pathvar = os.getenv('PATH')
+
 
 def shell_init():
 	''' The initialization function for the shell'''
