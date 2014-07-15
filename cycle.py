@@ -28,10 +28,12 @@ def cmd_find(typein):
 	'''find the command and execute if found'''
 	words = typein.split(" ")
 	firstword = words[0].strip()
+	#finds whether cmd is builtin ones or out-source ones
 	if firstword not in utils.builtin_cmd_list:
 		exec_cmd.find_out_cmd(typein)
 	else:
 		builtin.exec_builtin(typein)
+	#cmd not found
 	if utils.history_list[-1].cmd_found == False:
 		print("Yuqish: command %s not found!\n" % typein)
 

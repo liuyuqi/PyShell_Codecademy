@@ -1,12 +1,13 @@
 # utils.py
 # definition of shell classes.
 
-builtin_cmd_list = ["cd", "exit", "history"]
+builtin_cmd_list = ["cd", "exit", "history", "fg"]
 username = ""
 cwd = ""
 lwd = ""
 pathvar = ""
 history_list = []
+bg_list = []
 
 class Command (object):
 	'''The class for command, 

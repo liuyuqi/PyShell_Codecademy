@@ -2,6 +2,7 @@
 # functions of dealing with built-in commands
 
 import utils
+import bg
 import os
 
 def exec_builtin(typein):
@@ -15,6 +16,8 @@ def exec_builtin(typein):
 		cmd_exit()
 	if typein == "history":
 		cmd_history()
+	if typein == "fg":
+		cmd_fg(words)
 
 def cmd_exit():
 	'''quits the shell'''
@@ -33,7 +36,7 @@ def cmd_history():
 def cmd_cd(words):
 	target_dir = ""
 	if len(words) == 1:
-		target_dir = "/"
+		target_dir = os.getenv('HOME')
 	else:
 		secword = words[1]
 		if secword == "-":
@@ -47,3 +50,8 @@ def cmd_cd(words):
 
 	os.chdir(target_dir)
 	utils.lwd = utils.cwd
+
+def cmd_fg(words):
+	if len(words) != 1:
+		print("Error: input must contain fg only.")
+	bg.check_background_jobs()
