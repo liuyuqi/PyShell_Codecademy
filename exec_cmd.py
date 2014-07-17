@@ -5,7 +5,7 @@ import os
 import utils
 import bg
 
-def find_out_cmd(typein):
+def find_out_cmd(typein, rd):
 	'''Finds out-source cmds in the PATH directories 
 	and executes if any is found'''
 	words = typein.split(" ")
@@ -16,10 +16,10 @@ def find_out_cmd(typein):
 		filepath = path+"/"+firstword
 		if os.access(filepath, os.X_OK & os.R_OK):
 			utils.history_list[-1].cmd_found = True
-			exec_out(words, background)
+			exec_out(words, background, rd)
 			return
 
-def exec_out(words, background):
+def exec_out(words, background, rd):
 	'''executes the out-source cmd'''
 	wait_type = 0
 	if background == True:

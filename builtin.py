@@ -5,9 +5,21 @@ import utils
 import bg
 import os
 
-def exec_builtin(typein):
+def exec_builtin(typein, rd):
 	'''find built-in cmds and executes it'''
 	utils.history_list[-1].cmd_found = True
+	
+	if rd == None:
+		cmd_selector(typein)
+	else:
+		#print("Redirection required!")
+		succeed = bg.start_rd_builtin(typein, rd)
+		cmd_selector(succeed[1])
+	
+	if rd != None and succeed[0] == True:
+		bg.stop_rd_builtin(rd)
+
+def cmd_selector(typein):
 	words = typein.split(" ")
 	firstword = words[0].strip()
 	if firstword == "cd":
@@ -48,7 +60,11 @@ def cmd_cd(words):
 		else:
 			target_dir = utils.get_real_dir(secword)
 
-	os.chdir(target_dir)
+	try:
+		os.chdir(target_dir)
+	except OSError:
+		print("Error: cd: failed to chdir!")
+	#potential bug here
 	utils.lwd = utils.cwd
 
 def cmd_fg(words):

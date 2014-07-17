@@ -12,6 +12,8 @@ bg_list = []
 class Command (object):
 	'''The class for command, 
 	   each cmd takes an instance of this class'''
+	dirty_files = []
+	
 	def __init__(self, user_input):
 		self.cmdline = user_input
 		self.cmd_found = False
