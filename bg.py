@@ -110,7 +110,26 @@ def start_rd_builtin(typein, rd):
 		return [False, typein]
 	return [True, typein]
 	
-def stop_rd_builtin(rd):
+def start_rd(typein, rd):
+	'''starts file redirection for out-source cmds,
+	a little different from the start_rd_builtin() function'''
+	if rd[0][1] == 0:
+		print("Error: built-in commands doesn't support redirection of std input!")
+		return typein
+	words = typein.split(" ")
+
+	#get the command without rd descriptions.
+	typein = rd_eliminate(typein, rd)
+	
+	#get the target of redirection
+	for item in rd:
+		fake_target = words[item[0] + 1]
+		target = get_file_target(fake_target)
+		fd = change_fd_out(target, item)
+	
+	return typein
+	
+def stop_rd():
 	'''Changes the file descriptors back to stdin/out/err'''
 	sys.stdin = sys.__stdin__
 	sys.stdout = sys.__stdout__
@@ -119,6 +138,27 @@ def stop_rd_builtin(rd):
 	for fd in utils.history_list[-1].dirty_files:
 		fd.close()
 
+def change_fd_out(target, rd_member):
+	'''changes the file descriptor, however the outsource version'''
+	#First, determine the flags for file opening.
+	aux = rd_get_flag_out(rd_member)
+	
+	#then, determine the file discriptor to replace.
+	fd_to_replc = rd_get_orig_fd(rd_member)
+	
+	#finally, perform the file operation.
+	try:
+		fd = os.open(target, aux)
+	except OSError:
+		print("Error: cannot open file %s" % target)
+		return -1
+	else:
+		for num in fd_to_replc:
+			os.close(num)
+			os.dup(fd)
+			os.close(fd)
+			utils.history_list[-1].dirty_files.append(fd)
+		return fd
 
 def change_fd(target, rd_member):
 	'''changes the file descriptor as needed before redirection.
@@ -160,6 +200,19 @@ def rd_get_flag(rd_member):
 		exit()
 	return aux
 
+def rd_get_flag_out(rd_member):
+	'''Determine the flags for file opening. (the out-source version)'''
+	if rd_member[2] == "append":
+		aux = os.O_WRONLY | os.O_CREAT | os.O_APPEND
+	elif rd_member[2] == "overwrite":
+		aux = os.O_WRONLY | os.O_CREAT | os.O_TRUNC
+	elif rd_member[2] == "in":
+		aux = os.O_RDONLY
+	else:
+		print("ERROR in program execution!")
+		exit()
+	return aux
+
 def rd_get_orig_fd(rd_member):
 	'''then, determine the file discriptor to replace.'''
 	tmp = rd_member[1]
@@ -171,7 +224,6 @@ def rd_get_orig_fd(rd_member):
 		print("ERROR in program execution!")
 		exit()
 	return fd_to_replc
-
 
 def rd_eliminate(typein, rd):
 	'''Eliminate the rd parts and return only the command itself'''

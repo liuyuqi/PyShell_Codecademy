@@ -17,7 +17,7 @@ def exec_builtin(typein, rd):
 		cmd_selector(succeed[1])
 	
 	if rd != None and succeed[0] == True:
-		bg.stop_rd_builtin(rd)
+		bg.stop_rd()
 
 def cmd_selector(typein):
 	words = typein.split(" ")
