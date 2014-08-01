@@ -1,0 +1,25 @@
+ex2
+
+output
+
+From now on, we're going to review some important things in Python that may help build your shell.
+
+A shell needs to output the prompt. What is a prompt? You'll see in this exercise.
+
+By using the print statement, you can easily output the desired text to the terminal. Like this:
+
+print "Hello, world!"
+
+In this exercise, we're going to print a prompt on the screen.
+
+Exercise:
+1. Remember how to format the text? Please fill in the blanks to make prompt equals to "user [/home]> ".
+2. Print prompt on the screen.
+
+
+script:
+if code.count("username") < 2 or code.count("cwd") < 3:
+	return "Make sure you used the two variables in the submission."
+if CC.printed('user [/home]> ') == False:
+	return "The output of terminal is not correct, please check your code~~"
+return True

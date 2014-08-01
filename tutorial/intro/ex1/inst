@@ -1,0 +1,9 @@
+ex1
+
+What is a shell?
+
+A shell is generally an interface in which you interact with the operating system. It can use either CLI (command-line interface) or GUI (graphical user interface). But when people talk about shells, it usually refers to command-line terminals. Users type in commands and the shell interpretes it as well as passing the task to the operating system to execute it.
+
+Your task in this course is to write a CLI shell using Python! Python provides the os package, making it very convenient to invoke system calls in python! As you will see, it can be written in just a little over 200 lines of python code, although it's just a simple working shell skeleton!
+
+The code window shows what a working shell looks like. You can also open your own terminal, whether you're using Mac, Linux/Unix or Windows.

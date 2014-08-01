@@ -1,0 +1,39 @@
+ex3
+
+Input
+
+Output is not enough. As an interactive shell, we definitely need inputs!
+
+Python provides the `raw_input` function to allow us collect user's input from the keyboard. 
+
+It's easy! For example, we could store the user's input into `cmd_input` variable like this:
+
+    prompt = "Please type here: "
+    cmd_input = raw_input("prompt")
+
+Note that the prompt is printed on the screen too. So, there's no need to `print` the `prompt` any more.
+
+Exercise:
+
+Like the example above:
+1. print the prompt on the screen and take user's input, using only the `raw_input` function. Save the user's input in a variable called `cmd_input`, then 
+2. print `cmd_input` back on the screen.
+
+SCT:
+if type(error) == NameError:
+    return "Ooops, it seems that you used a variable that you never defined."
+if code.count("raw_input") == 0:
+	return "It seems that you didn't use the raw_input function?"
+
+try:
+    studentIn = cmd_input
+except NameError:
+    return "make sure you stored your input into the cmd_input variable!"
+else:
+    studentOut = CC.prints()
+    if studentOut[-1] != studentIn:
+        return "Your output is different from your input. Did you print the correct variable?"
+    
+return True
+
+

@@ -1,0 +1,51 @@
+ex4
+
+Lists
+
+Nice job! Now that we can take user's inputs, we need to make the shell "understand" the command.
+
+A typical command line looks like this:
+
+    ls -l /home/
+
+which means "list the `/home/` directory in long lists". In the command line, `ls`, `-l` and `/home/` are all called `command-line arguments`, and they're separated by blanks. In the command-line arguments, the first argument, in this example `ls`, is the command we want to execute, and other arguments are additional parameters that we add to the command. It is the duty of the shell to pick the command out, which is the first word, from the command line.
+
+Since all command-line arguments are separated by blanks, it makes great use of the `split` method. Do you remember? For the command above:
+
+    user_input = "ls -l /home/"
+    args = user_input.split(" ")
+    # now, args = ['ls', '-l', '/home/']
+
+Notice that there's a blank between the quotation marks.
+
+
+Exercise:
+
+Like the example above (add your code from line 10):
+1. split `user_input`, which is a string, by a blank. Then, store the list into a variable called `args`;
+2. Output the first element in `args`.
+3. Once finished, click `Save & Submit Code` to run. 
+
+Please type in the following command in the terminal: 
+`ls -l /home/` 
+and press enter. Note that there is a blank between each command-line argument!
+
+
+SCT:
+
+if type(error) == NameError:
+    return "Ooops, it seems that you used a variable that you never defined."
+
+if code.count("split") < 2:
+	return "It seems that you didn't use the split function?"
+if code.count("ls") > 0:
+    return "Hey, you can't just print ls out!"
+	
+args = user_input.split(" ")
+cmd = args[0]
+if CC.printed(user_input) == True:
+    return "Ah, don't print the whole command line! You need only the first command-line argument!"
+if CC.printed(cmd) == False:
+    return "Ooops, The command name is not printed, or you printed something more than the command itself. Only print the first command-line argument!"
+
+return True
