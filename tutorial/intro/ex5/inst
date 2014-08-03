@@ -1,0 +1,32 @@
+ex5
+
+Loops
+
+You don't expect your shell to take only one command and exit, right? A shell should be always running unless the user let it go. Therefore, we need a loop to keep it running.
+
+Since we want it to be an "infinite loop" -- obviously an infinite loop (of course, with an exit) is not always bad, especially in our case. A `while` loop is good here:
+
+    while True:
+        # do something here
+        if user_input == "exit":
+            break
+
+exercise:
+
+Add a while loop where you think it's the right spot. The loop body should be *print the prompt, take user's input, and print the command.* 
+
+Like the example above, please add an exit to the loop. You don't want to run your shell without being able to terminate it.
+
+Notice that the indentation applies to the loop body!
+
+When you're done, click `Save & Submit Code` to test your code. If you think the loop works fine, type `exit` and press enter to continue.
+
+
+SCT:
+
+if user_input.strip() != "exit":
+    return "Your loop doesn't seem right. The program exits before you typed 'exit'."
+if type(error) == SyntaxError or type(error) == NameError:
+    return "Please check your code."
+
+return True

@@ -1,0 +1,26 @@
+ex1
+
+The os module
+
+The `os` module provides dozens of methods, and they are operating system dependent. Since our shell needs to access system information, access the file system, and perform process management (in order to execute a command), those methods can become very handy (and necessary)!
+
+We'll cover some methods in this section, and we should expect to use them in later sections. Those methods are listed in the code window on the right.
+
+Notice that you need to explicitly `import` the os module before you use that method. It's like this:
+
+    import os
+    username = os.getlogin()
+
+or
+
+    from os import *
+    username = getlogin()
+
+os.getlogin()
+os.getcwd()
+os.getenv()
+os.chdir()
+os.access()
+os.fork()
+os.execvp()
+os.waitpid()

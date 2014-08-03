@@ -1,0 +1,15 @@
+ex1
+
+os.getlogin()
+
+Do you still remember the `prompt`? It's like
+`user [/home]> `
+
+in which `user` is the current login user's username, and `/home` is the current working directory. We do need to care about those two variables.
+
+Getting the current login user is simple, just use the `getlogin()` method in the `os` module.
+
+    import os
+    username = os.getlogin()
+
+
