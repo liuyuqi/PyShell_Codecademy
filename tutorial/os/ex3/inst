@@ -1,0 +1,36 @@
+ex1
+
+os.getcwd()
+
+
+Now that we successfully got our uid, we have another thing in concern: the Current Working Directory, or `cwd`.
+
+`cwd` is important, because we usually refer to a file in a way called `relative path`. For example, if our current working directory is `/home/user1` and there's a file in the path `/home/user1/test.txt`, we can simply `open test.txt` without having to type all those path (sometimes the path can be really long)!
+
+Getting the current working directory is easy. Like the way we get the uid, we can just call
+    os.getcwd()
+to get it.
+
+
+
+exercise:
+1. Get the current working directory using the `getcwd()` method in the `os` module and save the value in a variable called `cwd`. Do not forget to import the os module first!
+
+2. Print the value of `cwd` on the screen.
+
+
+SCT:
+
+import os
+if type(error) == NameError:
+    if code.count('import os') == 0:
+        return "Did you remember to import the os module?"
+    elif code.count('os.getcwd()') == 0 and code.count('getcwd()') > 0:
+        return "Did you call 'getcwd()' instead of 'os.getcwd()'?"
+    elif code.count('getcwd') > 0 and code.count('getcwd()') == 0:
+        return "You probably lost the parenthesis as calling a method!"
+
+ccwd = os.getcwd()
+if ccwd != cwd:
+    return "You're not getting the correct cwd!"
+return True

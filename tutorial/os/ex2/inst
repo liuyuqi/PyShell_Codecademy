@@ -1,15 +1,38 @@
-ex1
+ex2
 
-os.getlogin()
+Now let's start!
 
-Do you still remember the `prompt`? It's like
-`user [/home]> `
+In a shell, there's something we always concern about. The first concern is, who logged in this shell? That is, what is the user's username who logged in?
 
-in which `user` is the current login user's username, and `/home` is the current working directory. We do need to care about those two variables.
+*Do you still remember the `prompt`? It's like
+`user [/home]> `*
 
-Getting the current login user is simple, just use the `getlogin()` method in the `os` module.
+There are lots of ways to get the current logged-in user's username. But here in Codecademy, we'll get the user's id instead. `uid` is a distinct number that identifies a user in a system.
 
-    import os
-    username = os.getlogin()
+We can easily get the user's `uid` by calling `getuid` method in the `os` module. Remember the way to call an `os` method? 
+    os.getuid()
 
 
+exercise:
+
+1. Get the current `uid` by using `os.getuid`, and store the value in a variable called `cuid`.
+
+2. print the value of `cuid` on the screen.
+
+Don't forget to `import os` before you call any of its method!
+
+SCT:
+
+import os
+if type(error) == NameError:
+    if code.count('import os') == 0:
+        return "Did you remember to import the os module?"
+    elif code.count('os.getuid()') == 0 and code.count('getuid()') > 0:
+        return "Did you call 'getuid()' instead of 'os.getuid()'?"
+    elif code.count('getuid') > 0 and code.count('getuid()') == 0:
+        return "You probably lost the parenthesis as calling a method!"
+
+uid = os.getuid()
+if uid != cuid:
+    return "You're not getting the correct uid!"
+return True

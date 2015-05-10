@@ -1,0 +1,13 @@
+_=/usr/bin/env
+PWD=/home/cg/root
+DART_SDK=/usr/local/dart
+GNUSTEP_HOST_CPU=x86_64
+HOME=/home/cg/root
+SHLVL=2
+GNUSTEP_USER_ROOT=/home/cg/root/GNUstep
+GNUSTEP_SYSTEM_ROOT=/usr/GNUstep/System
+GNUSTEP_PATHLIST=/usr/GNUstep/System:/usr/GNUstep/Network:/usr/GNUstep/Local:/home/cg/root/GNUstep
+CLASSPATH=/home/cg/root/GNUstep/Library/Libraries/Java:/usr/GNUstep/Local/Library/Libraries/Java:/usr/GNUstep/System/Library/Libraries/Java::/usr/share/java/mysql-connector-java.jar:.
+LIBRARY_COMBO=gnu-gnu-gnu
+INFOPATH=/usr/GNUstep/System/Library/Documentation/info::/usr/GNUstep/Local/Library/Documentation/info::/home/cg/root/GNUstep/Lib
+rary/Documentation/info:

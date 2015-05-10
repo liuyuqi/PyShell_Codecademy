@@ -1,0 +1,9 @@
+ex4
+
+The Environment Variable
+
+Great job! Now we can get both the userid and the current working directory. Now we're going to get some equally important system information: the environment variable.
+
+Environment variables are a set of dynamic named values that can affect the way running processes will behave on a computer. It might guide the shell on where to search the executables to execute; it might determine where to place the temperory files, etc.
+
+If you execute the `env` command on some Linux machines, you may see the output like the example we provided on the right.
